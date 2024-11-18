@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Lazar Stanisavljevic">
+    <meta name="description" content="Landing page for my task management service alongside weather application">
+    <meta name="generator" content="Visual Studio Code 1.86.2">
+    <meta name="keywords"
+        content="Task, Management, Organisation, Organiser, Schedule, Scheduling, Weather, Temperature">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a id="logo" href="/index.html"><img id="logo_image" src="media/website_icon.png" alt="Logo for website"
+                draggable="false"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Modal -->
+    <div class="modal" id="task_modal">
+        <header class="modal-header">
+            <h2>Describe your task</h2>
+            <button class="btn close-modal">&times;</button>
+        </header>
+        <section class="modal-body">
+            <form id="input_form">
+                <input type="text" id="task_input" name="taskName" placeholder="What needs to be done..." required>
+                <input type="submit" value="Add task" id="task_submit">
+            </form>
+        </section>
+    </div>
+
+    <!-- Date -->
+    <section id="date_container">
+        <p id="date"></p>
+    </section>
+
+    <!-- Main -->
+    <main>
+
+        <div class="grid_container">
+            <!-- Todo container -->
+            <div class="todo_container">
+                <div class="status" id="no_status">
+                    <h1>No Status</h1>
+                    <div class="button_container">
+                        <button id="add_btn" data-target-modal="#task_modal">Add a task</button>
+                    </div>
+                </div>
+                <div class="status" id="not_started">
+                    <h1>Not Started</h1>
+                </div>
+                <div class="status" id="in_progress">
+                    <h1>In Progress</h1>
+                </div>
+                <div class="status" id="completed">
+                    <h1>Completed</h1>
+                </div>
+
+                <!-- Overlay -->
+                <div id="overlay"></div>
+            </div>
+
+            <!-- Weather App Aside -->
+            <aside>
+                <div id="weather_container">
+                    <h1>Check the weather!</h1>
+                    <select id="country" name="country"></select>
+                    <div id="weather_btn_container">
+                        <button id="weather_btn" onclick="getWeather()">Get Weather</button>
+                    </div>
+                    <div id="weather_info_div">
+                        <div>
+                            <p id="p_weather_info"></p>
+                            <img src="media/placeholder.png" id="weather_icon" alt="Icon for displayed weather">
+                            <div id="temp_div"></div>
+                            <p id="p_temp"></p>
+                        </div>
+                        <div>
+                            <div id="weather_info"></div>
+                            <p id="p_country_name"></p>
+                            <p id="p_description"></p>
+                        </div>
+
+                    </div>
+                    <div id="hourly_forecast"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div id="footer_content">
+            <h1>Contact - Email</h1>
+            <p>Lazar@valex.co.uk</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
