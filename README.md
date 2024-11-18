@@ -5,7 +5,7 @@ This was a final project for a course I took in web-development. It focused on v
 
 # How to run
 
-Simple open the project folder in and run Server.java.
+Open the project folder and run Server.java
 
 It will prompt you with a Server Configuration window and request a port. (I suggest for test purposes you use the "Use Default Port" checkbox)
 
