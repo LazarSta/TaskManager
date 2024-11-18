@@ -1,0 +1,472 @@
+@font-face {
+    font-family: monsterrat;
+    src: url('Media/Montserrat-Medium.otf');
+}
+
+* {
+    font-family: monsterrat, Arial;
+    user-select: none;
+}
+
+/* Medium screens */
+body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 660px;
+    min-height: 100vh;
+    margin: 0px;
+    background-color: #b19b82;
+}
+
+main {
+    display: block;
+    margin: 0 0;
+}
+
+nav {
+    padding: 15px;
+}
+
+#about_div {
+    margin: 25px 2%;
+    height: 80vh;
+}
+
+#about_div img {
+    display: block;
+    margin: auto;
+    height: 200px;
+}
+
+#date_container {
+    background-color: #9b8771;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 1px;
+}
+
+#date {
+    padding-left: 20px;
+}
+
+aside {
+    min-width: 500px;
+    min-height: 300px;
+    background-color: #8f7e6a;
+    border-radius: 10px;
+    grid-area: aside;
+    padding: 10px;
+    margin: 0.5rem 0.5rem;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-areas:
+        "todo todo todo"
+        "aside aside aside"
+    ;
+}
+
+header,
+footer {
+    display: flex;
+    align-items: center;
+    background-color: #d5b089;
+    color: black;
+    width: 100%;
+    height: 80px;
+    gap: 20px;
+    min-width: 660px;
+}
+
+footer h1 {
+    font-size: 16px;
+}
+
+#footer_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+footer p {
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    gap: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.todo_container {
+    background-color: #8f7e6a;
+    border-radius: 10px;
+    padding: 10px;
+    grid-area: todo;
+    height: 80vh;
+    display: flex;
+    margin: 0.5rem 0.5rem;
+}
+
+.status {
+    min-width: 150px;
+    width: 25%;
+    position: relative;
+}
+
+.status h1 {
+    top: 0;
+    left: 0;
+    background-color: #343434;
+    color: #ccc;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.status:nth-child(even) {
+    background-color: #c7b9aa;
+}
+
+.status:nth-child(odd) {
+    background-color: #b6a99b;
+}
+
+.status.drag_enter {
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #5f5446;
+}
+
+h1 {
+    margin: 0;
+}
+
+#logo {
+    height: 80%;
+    margin-left: 10px;
+}
+
+#logo_image {
+    height: 100%;
+}
+
+#add_btn {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    background-color: #ccc;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.button_container {
+    margin: 0.5rem 0.5rem;
+}
+
+#add_btn:hover {
+    background-color: #b19b82;
+    color: #f0f0f0;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #b19b82;
+    box-shadow: rgba(15, 15, 15, .1) 0px 0px 0px 1px,
+        rgba(15, 15, 15, .1) 0px 2px 4px;
+    border-radius: 5px;
+    padding: .4rem 1rem;
+    font-size: .9rem;
+    margin: 0.5rem 0.5rem;
+}
+
+.todo:hover {
+    background-color: #9e8b76;
+}
+
+.todo.being_dragged {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #b19b82;
+    box-shadow: rgba(15, 15, 15, .1) 0px 0px 0px 1px,
+        rgba(15, 15, 15, .1) 0px 2px 4px;
+    border-radius: 5px;
+    padding: .4rem 1rem;
+    font-size: .9rem;
+    margin: 0.5rem 0.5rem;
+}
+
+.todo .close {
+    position: absolute;
+    right: 1rem;
+    font-size: 1.1rem;
+    color: #665d4d86;
+}
+
+.todo .close:hover {
+    color: #343434;
+    cursor: pointer;
+}
+
+/* Modal */
+.close-modal {
+    color: #695d4e;
+    border: none;
+    font-size: 1.5rem;
+    background-color: #ffffff00;
+}
+
+.close-modal:hover {
+    color: #000000;
+    cursor: pointer;
+}
+
+.modal {
+    width: 450px;
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.3s ease-in-out;
+    border: 1px solid #695d4e;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.modal.active {
+    top: 15%;
+    background-color: #a78c6d;
+}
+
+.modal .modal-header {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #695d4e;
+    padding: 0.5rem;
+    background-color: #b8a086;
+    border-radius: 8px;
+    min-width: 100%;
+}
+
+.modal .modal-body {
+    padding: 0.75rem;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #695d4e;
+    background-color: #dfc5a6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #5d8b5f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #79b47c;
+}
+
+/* Modal overlay */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#overlay.active {
+    display: block;
+}
+
+/* Weather App */
+#weather_container h1 {
+    font-size: 1.5em;
+    background-color: #343434;
+    border-radius: 10px;
+    margin: 0.1rem 0.1rem;
+    padding: 10px;
+    color: #ccc;
+}
+
+#weather_container {
+    text-align: center;
+}
+
+#weather_btn {
+    width: 50%;
+    padding: 0.5rem 0.5rem;
+    background-color: #ccc;
+    border: none;
+    font-size: 1em;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#weather_btn:hover {
+    background-color: #b19b82;
+}
+
+#weather_btn_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+#temp_div {
+    margin-right: 10px;
+}
+
+#temp_div p {
+    font-size: 2em;
+}
+
+#weather_info {
+    font-size: 1em;
+}
+
+#weather_info_div {
+    gap: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather_info_div p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#weather_icon {
+    margin-top: -30px;
+    width: 100px;
+    height: 100px;
+    display: none;
+}
+
+#weather_icon.shown {
+    display: block;
+}
+
+#hourly_forecast {
+    background-color: #b6a99b;
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 5px;
+    display: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+#hourly_forecast.shown {
+    display: flex;
+}
+
+.hourly_item {
+    flex: 0 0 auto;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    color: #000000;
+}
+
+.hourly_item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+#hourly_heading {
+    color: #ccc;
+    margin-top: 10px;
+}
+
+/* Large screens */
+@media only screen and (min-width: 1200px) {
+
+    main {
+        display: block;
+        margin: 0 10%;
+    }
+
+    .grid_container {
+        grid-template-areas:
+            "todo todo todo aside aside"
+        ;
+    }
+
+    aside {
+        min-width: 450px;
+    }
+
+    #weather_icon {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 10px;
+        margin-bottom: 0;
+        display: none;
+    }
+
+    #temp_div {
+        margin-top: -40px;
+    }
+
+    #temp_div p {
+        font-size: 1.5em;
+    }
+
+    #hourly_forecast {
+        margin-top: 50px;
+    }
+
+    #weather_info_div {
+        display: block;
+    }
+}
